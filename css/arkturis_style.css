@@ -139,7 +139,6 @@ textarea {
 }
 
 body {
-  /*font-family: "Open Sans", Arial, sans-serif;*/
   font-family: 'Maven Pro', sans-serif;
   font-size: .83em;
   line-height: 1.75;
@@ -181,6 +180,7 @@ textarea {
   padding: 10px 12px;
   color: #666666;
 }
+
 button:focus,
 input:focus,
 select:focus,
@@ -222,10 +222,12 @@ hr {
   z-index: 11;
   margin: 30px 0;
 }
+
 .site-header ul.social-icons li {
   display: inline-block;
   margin: 0 2px;
 }
+
 .site-header ul.social-icons li a {
   width: 50px;
   height: 50px;
