@@ -691,3 +691,19 @@ a.toggle-menu {
 #footer {
   margin-top: 130px;
 }
+
+#social:hover {
+    -webkit-transform:scale(1.3); 
+    -moz-transform:scale(1.3); 
+    -o-transform:scale(1.3); 
+}
+
+#social {
+    -webkit-transform:scale(0.9);
+    /* Browser Variations: */
+    -moz-transform:scale(0.9);
+    -o-transform:scale(0.9); 
+    -webkit-transition-duration: 0.5s; 
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
