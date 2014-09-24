@@ -715,3 +715,7 @@ a.toggle-menu {
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
 }
+#whatever {
+padding-right: 0px;
+padding-left: 0px;
+}
