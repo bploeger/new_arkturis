@@ -281,6 +281,7 @@ hr {
   text-transform: uppercase;
   color: #656575;
   font-size: 32px;
+  font-weight:bold;
 }
 
 .main-menu ul li {
