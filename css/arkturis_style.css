@@ -214,13 +214,13 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid #e2e2e2;
-  margin: -80px 0;
+  margin: 40px 0;
 }
 
 .site-header ul.social-icons {
   position: relative;
   z-index: 11;
-  margin: -80px 0;
+  margin: 30px 0;
 }
 
 .site-header ul.social-icons li {
@@ -231,7 +231,7 @@ hr {
 .site-header ul.social-icons li a {
   width: 50px;
   height: 50px;
-  background-color: #c0c0c0;
+  background-color: white;
   color: #007dff;
   text-align: center;
   line-height: 50px;
