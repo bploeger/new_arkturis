@@ -220,7 +220,7 @@ hr {
 .site-header ul.social-icons {
   position: relative;
   z-index: 11;
-  margin: 30px 0;
+  margin: -80px 0;
 }
 
 .site-header ul.social-icons li {
