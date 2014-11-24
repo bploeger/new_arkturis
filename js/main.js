@@ -1,87 +1,70 @@
-jQuery(document).ready(function($) {
+jQuery(function($) {'use strict',
 
-	'use strict';
-
-
-	/************** Toggle *********************/
-    // Cache selectors
-    var lastId,
-        topMenu = $(".menu-first, .menu-responsive"),
-        topMenuHeight = topMenu.outerHeight()+15,
-        // All list items
-        menuItems = topMenu.find("a"),
-        // Anchors corresponding to menu items
-        scrollItems = menuItems.map(function(){
-          var item = $($(this).attr("href"));
-          if (item.length) { return item; }
-        });
-
-    // Bind click handler to menu items
-    // so we can get a fancy scroll animation
-    menuItems.click(function(e){
-      var href = $(this).attr("href"),
-          offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-      $('html, body').stop().animate({ 
-          scrollTop: offsetTop
-      }, 300);
-      e.preventDefault();
-    });
-
-    // Bind to scroll
-    $(window).scroll(function(){
-       // Get container scroll position
-       var fromTop = $(this).scrollTop()+topMenuHeight;
-       
-       // Get id of current scroll item
-       var cur = scrollItems.map(function(){
-         if ($(this).offset().top < fromTop)
-           return this;
-       });
-       // Get the id of the current element
-       cur = cur[cur.length-1];
-       var id = cur && cur.length ? cur[0].id : "";
-       
-       if (lastId !== id) {
-           lastId = id;
-           // Set/remove active class
-           menuItems
-             .parent().removeClass("active")
-             .end().filter("[href=#"+id+"]").parent().addClass("active");
-       }                   
-    });
+	//#main-slider
+	$(function(){
+		$('#main-slider.carousel').carousel({
+			interval: 8000
+		});
+	});
 
 
+	// accordian
+	$('.accordion-toggle').on('click', function(){
+		$(this).closest('.panel-group').children().each(function(){
+		$(this).find('>.panel-heading').removeClass('active');
+		 });
 
-    $(window).scroll(function(){
-         $('.main-header').toggleClass('scrolled', $(this).scrollTop() > 1);
-     });
+	 	$(this).closest('.panel-heading').toggleClass('active');
+	});
 
+	//Initiat WOW JS
+	new WOW().init();
 
+	// portfolio filter
+	$(window).load(function(){'use strict';
+		var $portfolio_selectors = $('.portfolio-filter >li>a');
+		var $portfolio = $('.portfolio-items');
+		$portfolio.isotope({
+			itemSelector : '.portfolio-item',
+			layoutMode : 'fitRows'
+		});
+		
+		$portfolio_selectors.on('click', function(){
+			$portfolio_selectors.removeClass('active');
+			$(this).addClass('active');
+			var selector = $(this).attr('data-filter');
+			$portfolio.isotope({ filter: selector });
+			return false;
+		});
+	});
 
-    $('a[href="#top"]').click(function(){
-        $('html, body').animate({scrollTop: 0}, 'slow');
-        return false;
-    });
+	// Contact form
+	var form = $('#main-contact-form');
+	form.submit(function(event){
+		event.preventDefault();
+		var form_status = $('<div class="form_status"></div>');
+		$.ajax({
+			url: $(this).attr('action'),
 
+			beforeSend: function(){
+				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Email is sending...</p>').fadeIn() );
+			}
+		}).done(function(data){
+			form_status.html('<p class="text-success">' + data.message + '</p>').delay(3000).fadeOut();
+		});
+	});
 
-    $('.flexslider').flexslider({
-      slideshow: true,
-      slideshowSpeed: 5000,  
-      animation: "fade",
-      directionNav: false,
-    });
+	
+	//goto top
+	$('.gototop').click(function(event) {
+		event.preventDefault();
+		$('html, body').animate({
+			scrollTop: $("body").offset().top
+		}, 500);
+	});	
 
-
-    $('.toggle-menu').click(function(){
-        $('.menu-responsive').slideToggle();
-        return false;
-    });
-
-
-    /************** LightBox *********************/
-      $(function(){
-        $('[data-rel="lightbox"]').lightbox();
-      });
-
-
+	//Pretty Photo
+	$("a[rel^='prettyPhoto']").prettyPhoto({
+		social_tools: false
+	});	
 });
