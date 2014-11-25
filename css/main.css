@@ -204,6 +204,7 @@ body > section {
   z-index: 101;
   width: 100%;
   overflow: overlay;
+  backface-visibility: hidden;
 }
 
 .top-number{
@@ -290,6 +291,7 @@ input.search-form:hover {
   box-shadow: -2px -6px 16px 6px;
   margin: 50px 0 0 0;
   overflow: overlay;
+  backface-visibility: hidden;
 }
 
  .navbar-nav{
